@@ -1,29 +1,18 @@
-import { Msg } from './message/Msg';
-import { Form } from './form/Form';
-import { Contacts } from './Contacts/Contacts';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectContacts,
-  selectPendingState,
-  selectError,
-} from './redux/selectors';
-import { useEffect } from 'react';
-import { getAllContactsThunk } from './redux/contacts/contactsThunks';
-import css from './app.module.css';
-
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
+import { Home } from 'pages/home/Home';
+import { SignIn } from 'pages/signIn/SignIn';
+import { Register } from 'pages/register/register';
+import { Phonebook } from 'pages/phoneBook/Phonebook';
 export const App = () => {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isPending = useSelector(selectPendingState);
-  const error = useSelector(selectError);
-  useEffect(() => {
-    dispatch(getAllContactsThunk());
-  }, [dispatch]);
   return (
-    <>
-      <Form />
-      {isPending && !error && <div className={css.loader}>Loading...</div>}
-      {contacts.length === 0 ? <Msg /> : <Contacts />}
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/phonebook" element={<Phonebook />} />
+      </Route>
+    </Routes>
   );
 };
