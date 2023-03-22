@@ -9,6 +9,7 @@ const handlePendingState = (state, action) => {
   state.isPending = true;
 };
 const handleErrorMessage = (state, action) => {
+  state.isPending = false;
   state.errorMessage = action.payload;
 };
 const isPendingAction = action => action.type.endsWith('pending');

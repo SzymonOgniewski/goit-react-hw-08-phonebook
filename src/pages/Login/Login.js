@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { signIn } from 'redux/auth/authThunk';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/authHook/useAuth';
-export const SignIn = () => {
+const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthorized = useAuth();
@@ -38,3 +38,4 @@ export const SignIn = () => {
     </main>
   );
 };
+export default SignIn;

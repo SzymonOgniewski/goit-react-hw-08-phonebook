@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/authHook/useAuth';
 
-export const Home = () => {
+const Home = () => {
   const isAuthorized = useAuth();
   const navigate = useNavigate();
   return (
@@ -26,3 +26,4 @@ export const Home = () => {
     </main>
   );
 };
+export default Home;

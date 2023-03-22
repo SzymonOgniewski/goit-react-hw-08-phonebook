@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { refreshUser, register, signIn, signOut } from './authThunk';
 
+const handleRejection = (state, action) => {
+  state.isRefreshing = false;
+};
+const isRejectedAction = action => action.type.endsWith('rejected');
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -33,6 +37,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
+      .addMatcher(isRejectedAction, handleRejection)
       .addDefaultCase((state, action) => state);
 
     // [register.fulfilled](state, action) {

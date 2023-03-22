@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'redux/auth/authThunk';
 import { useAuth } from 'redux/auth/authHook/useAuth';
-import { selectUserName } from 'redux/auth/authSelector';
+import { selectUserName, selectUserEmail } from 'redux/auth/authSelector';
 export const Layout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthorized = useAuth();
   const userName = useSelector(selectUserName);
+  const userEmail = useSelector(selectUserEmail);
   const handleSignOut = () => {
     dispatch(signOut());
     navigate('');
@@ -23,7 +24,11 @@ export const Layout = () => {
             <div>
               {isAuthorized ? (
                 <>
-                  <h2>Logged in as:{userName} </h2>
+                  <div>
+                    <h2>Hello:{userName} </h2>
+                    <span>{userEmail}</span>
+                  </div>
+
                   <button onClick={handleSignOut}>Sign out</button>
                 </>
               ) : (

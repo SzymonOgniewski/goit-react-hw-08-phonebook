@@ -1,18 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunk';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/authSelector';
-export const Register = () => {
+const Register = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.elements.name.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-    console.log(name, email, password);
-    console.log(isLoggedIn);
     dispatch(register({ name: name, email: email, password: password }));
     form.reset();
   };
@@ -39,3 +34,4 @@ export const Register = () => {
     </main>
   );
 };
+export default Register;
