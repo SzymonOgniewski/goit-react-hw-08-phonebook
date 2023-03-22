@@ -10,7 +10,7 @@ export const Phonebook = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllContactsThunk());
-  });
+  }, [dispatch]);
   return (
     <main>
       <div>

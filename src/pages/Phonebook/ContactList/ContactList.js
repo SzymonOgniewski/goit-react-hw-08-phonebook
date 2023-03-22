@@ -5,7 +5,6 @@ import { Filter } from './Filter/Filter';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
-  console.log(contacts);
   const filter = useSelector(selectFilter);
 
   const filteredList = contacts.filter(contact =>
