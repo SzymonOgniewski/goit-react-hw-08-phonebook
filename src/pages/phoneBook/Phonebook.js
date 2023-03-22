@@ -1,4 +1,6 @@
 import React from 'react';
+import { AddContactForm } from './AddContactForm/AddContactForm';
+import { ContactList } from './ContactList/ContactList';
 
 export const Phonebook = () => {
   return (
@@ -6,6 +8,8 @@ export const Phonebook = () => {
       <div>
         <div>
           <h2>Contacts</h2>
+          <AddContactForm />
+          <ContactList />
         </div>
       </div>
     </main>

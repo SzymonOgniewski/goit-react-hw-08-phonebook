@@ -15,9 +15,9 @@ import {
 } from 'redux-persist/es/constants';
 
 const tasksPersistConfig = {
-  key: 'tasks',
+  key: 'contacts',
   storage,
-  whitelist: ['list'],
+  whitelist: ['contacts'],
 };
 
 const authPersistConfig = {
@@ -28,8 +28,8 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    tasks: persistReducer(tasksPersistConfig, contactReducer),
-    filters: filterReducer,
+    contacts: persistReducer(tasksPersistConfig, contactReducer),
+    filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware: getDefaultMiddleware =>

@@ -1,14 +1,21 @@
 import { useDispatch } from 'react-redux';
 import { signIn } from 'redux/auth/authThunk';
-
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'redux/auth/authHook/useAuth';
+import { getAllContactsThunk } from 'redux/contacts/contactsThunks';
 export const SignIn = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuthorized = useAuth();
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
     dispatch(signIn({ email: email, password: password }));
+    if (isAuthorized) {
+      navigate('/phonebook');
+    }
   };
 
   return (
