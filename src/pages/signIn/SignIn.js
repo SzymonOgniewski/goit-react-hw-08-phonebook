@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { signIn } from 'redux/auth/authThunk';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/authHook/useAuth';
-import { getAllContactsThunk } from 'redux/contacts/contactsThunks';
 export const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

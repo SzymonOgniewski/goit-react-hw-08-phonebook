@@ -33,11 +33,12 @@ const contactsSlice = createSlice({
         state.errorMessage = null;
         state.contacts.push(action.payload);
       })
-      .addCase(deleteContactThunk, (state, action) => {
+      .addCase(deleteContactThunk.fulfilled, (state, action) => {
         state.isPending = false;
         state.errorMessage = null;
-        const id = action.payload.id;
-        const index = state.contacts.findIndex(contact => contact.id === id);
+        const index = state.contacts.findIndex(
+          contact => contact.id === action.payload.id
+        );
         state.contacts.splice(index, 1);
       })
       .addMatcher(isPendingAction, handlePendingState)

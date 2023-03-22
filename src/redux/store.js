@@ -14,12 +14,6 @@ import {
   REHYDRATE,
 } from 'redux-persist/es/constants';
 
-const tasksPersistConfig = {
-  key: 'contacts',
-  storage,
-  whitelist: ['contacts'],
-};
-
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -28,7 +22,7 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    contacts: persistReducer(tasksPersistConfig, contactReducer),
+    contacts: contactReducer,
     filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },
