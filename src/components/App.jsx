@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { Home } from 'pages/home/Home';
-import { SignIn } from 'pages/SignIn/SignIn';
+import { SignIn } from 'pages/Login/Login';
 import { Register } from 'pages/Register/register';
 import { Phonebook } from 'pages/Phonebook/Phonebook';
 import { useDispatch } from 'react-redux';
