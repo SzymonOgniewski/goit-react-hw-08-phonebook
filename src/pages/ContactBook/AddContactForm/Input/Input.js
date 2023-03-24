@@ -1,28 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormLabel, Input, Flex } from '@chakra-ui/react';
 
-export const Input = ({
+export const AddContactInput = ({
   placeholder,
   type,
   pattern,
   title,
   inputName,
   label,
-  htmlFor,
+  maxLength,
 }) => {
   return (
-    <>
-      <label htmlFor={htmlFor}>{label}</label>
-      <input
+    <Flex flexDir="column" justifyContent="center" alignItems="center">
+      <FormLabel>{label}</FormLabel>
+      <Input
         autoComplete="off"
         placeholder={placeholder}
         type={type}
         name={inputName}
         pattern={pattern}
         title={title}
+        maxLength={maxLength}
         required
+        w="250px"
+        focusBorderColor="teal.500"
       />
-    </>
+    </Flex>
   );
 };
 Input.propTypes = {
@@ -32,5 +36,5 @@ Input.propTypes = {
   pattern: PropTypes.string,
   title: PropTypes.string,
   label: PropTypes.string,
-  htmlFor: PropTypes.string,
+  maxLength: PropTypes.number,
 };

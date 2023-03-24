@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authThunk';
+import { FormLabel, Input, Button, Flex } from '@chakra-ui/react';
+
 const Register = () => {
   const dispatch = useDispatch();
   const handleSubmit = e => {
@@ -12,26 +14,54 @@ const Register = () => {
     form.reset();
   };
   return (
-    <main>
-      <div>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" autoComplete="off" required></input>
-            <label>E-mail</label>
-            <input type="email" name="email" autoComplete="off" required />
-            <label>Password</label>
-            <input
+    <>
+      <form onSubmit={handleSubmit}>
+        <Flex
+          flexDir="column"
+          justifyContent="center"
+          gap="10px"
+          alignItems="center"
+        >
+          <Flex flexDir="column" alignItems="center">
+            <FormLabel>Name:</FormLabel>
+            <Input
+              focusBorderColor="teal.500"
+              w="250px"
+              type="text"
+              name="name"
+              autoComplete="off"
+              required
+            />
+          </Flex>
+          <Flex flexDir="column" alignItems="center">
+            <FormLabel>E-mail:</FormLabel>
+            <Input
+              focusBorderColor="teal.500"
+              w="250px"
+              type="email"
+              name="email"
+              autoComplete="off"
+              required
+            />
+          </Flex>
+          <Flex flexDir="column" alignItems="center">
+            <FormLabel>Password:</FormLabel>
+            <Input
+              focusBorderColor="teal.500"
+              w="250px"
               type="password"
               name="password"
               autoComplete="off"
               required
             />
-            <button type="submit">Sign up</button>
-          </form>
-        </div>
-      </div>
-    </main>
+          </Flex>
+
+          <Button type="submit" colorScheme="teal" variant="outline">
+            Sign up
+          </Button>
+        </Flex>
+      </form>
+    </>
   );
 };
 export default Register;

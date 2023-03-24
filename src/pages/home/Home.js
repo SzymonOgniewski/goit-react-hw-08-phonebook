@@ -1,29 +1,46 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'redux/auth/authHook/useAuth';
+import { Flex, Heading, Button } from '@chakra-ui/react';
 
 const Home = () => {
   const isAuthorized = useAuth();
   const navigate = useNavigate();
   return (
-    <main>
-      <div>
-        {!isAuthorized && (
-          <div>
-            <h2>Welcome to your phonebook!</h2>
-            <button onClick={() => navigate('/sign-in')}>
-              Sign in to add contacts to your own phonebook
-            </button>
-            <span>Don't You have an account?</span>
-            <button onClick={() => navigate('/register')}>Sign up here</button>
-          </div>
-        )}
-        {isAuthorized && (
-          <button onClick={() => navigate('/phonebook')}>
-            Check your phonebook
-          </button>
-        )}
-      </div>
-    </main>
+    <>
+      {!isAuthorized && (
+        <Flex
+          flexDir="column"
+          justifyContent="center"
+          textAlign="center"
+          gap="10px"
+          alignItems="center"
+        >
+          <Heading fontSize="24px">Welcome to your phonebook!</Heading>
+          <Button
+            onClick={() => navigate('/sign-in')}
+            colorScheme="teal"
+            variant="outline"
+            whiteSpace="normal"
+          >
+            Sign in to add contacts to your own phonebook
+          </Button>
+          <span>Don't You have an account?</span>
+          <Button
+            onClick={() => navigate('/register')}
+            colorScheme="teal"
+            variant="outline"
+            whiteSpace="normal"
+          >
+            Sign up here
+          </Button>
+        </Flex>
+      )}
+      {isAuthorized && (
+        <button onClick={() => navigate('/phonebook')}>
+          Check your phonebook
+        </button>
+      )}
+    </>
   );
 };
 export default Home;

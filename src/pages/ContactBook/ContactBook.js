@@ -1,3 +1,4 @@
+import { Heading, Flex } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllContactsThunk } from 'redux/contacts/contactsThunks';
@@ -10,15 +11,19 @@ const Phonebook = () => {
     dispatch(getAllContactsThunk());
   }, [dispatch]);
   return (
-    <main>
-      <div>
-        <div>
-          <h2>Contacts</h2>
-          <AddContactForm />
-          <ContactList />
-        </div>
-      </div>
-    </main>
+    <Flex flexDir="column">
+      <Heading
+        alignSelf="center"
+        textAlign="center"
+        p="0 10px"
+        borderBottom="1px"
+        borderColor="teal.600"
+      >
+        Contacts
+      </Heading>
+      <AddContactForm />
+      <ContactList />
+    </Flex>
   );
 };
 export default Phonebook;

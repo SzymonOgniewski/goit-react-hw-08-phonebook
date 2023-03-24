@@ -6,7 +6,14 @@ import {
 import { useSelector } from 'react-redux';
 import { Contact } from './Contact/Contact';
 import { Filter } from './Filter/Filter';
-import { Spinner, Box } from '@chakra-ui/react';
+import {
+  Spinner,
+  Box,
+  Flex,
+  ListItem,
+  UnorderedList,
+  Text,
+} from '@chakra-ui/react';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -16,18 +23,18 @@ export const ContactList = () => {
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
   const list = filteredList.map(contact => (
-    <li key={contact.id}>
+    <ListItem key={contact.id}>
       <Contact contact={contact} />
-    </li>
+    </ListItem>
   ));
 
   return (
-    <div>
+    <>
       <Filter />
       {isPending ? (
         <Box textAlign={'center'}>
           <Spinner
-            color="red.500"
+            color="teal.500"
             size="xl"
             speed="0.35s"
             thickness="6px"
@@ -36,14 +43,25 @@ export const ContactList = () => {
           />
         </Box>
       ) : (
-        <div>
+        <>
           {list.length === 0 ? (
-            <p>Brak kontaktów do wyświetlenia.</p>
+            <Text as="p" textAlign="center" fontSize="24px" color="teal.400">
+              There are no contacts on your list, add some!
+            </Text>
           ) : (
-            <ul>{list}</ul>
+            <UnorderedList>
+              <Flex
+                flexDir="column"
+                justifyContent="center"
+                gap="10px"
+                alignItems="center"
+              >
+                {list}
+              </Flex>
+            </UnorderedList>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };

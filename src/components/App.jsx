@@ -24,7 +24,7 @@ export const App = () => {
   return isRefreshing ? (
     <Box textAlign={'center'}>
       <Spinner
-        color="red.500"
+        color="teal.500"
         size="xl"
         speed="0.35s"
         thickness="6px"
@@ -37,7 +37,7 @@ export const App = () => {
       fallback={
         <Box textAlign={'center'}>
           <Spinner
-            color="red.500"
+            color="teal.500"
             size="xl"
             speed="0.35s"
             thickness="6px"
